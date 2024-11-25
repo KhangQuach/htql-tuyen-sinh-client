@@ -1,5 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import Header from "@/partials/Header";
+import Footer from "@/partials/Footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,7 +25,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Header />
+
+        <div className="h-20 flex justify-center items-center text-2xl text-white" style={{ backgroundColor: '#e3bf00' }}>Đồng thuận - Tận tâm - Chuẩn mực - Sáng tạo</div>
         {children}
+        <Footer />
       </body>
     </html>
   );
