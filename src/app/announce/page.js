@@ -76,11 +76,11 @@ export default function Announce() {
             return (
                 <div className="profile-card-announce flex gap-32" data-id="1">
                   <div>
-                    <h3>{item.title}</h3>
-                    <p>Ngày tạo: {item.createdDate}</p>
+                    <h3 className="text-sky-500 font-semibold">{item.title}</h3>
+                    <p>Ngày nhận: {item.createdDate}</p>
                   </div>
                   <div>
-                    <h3>Nội dung:</h3>
+                    <h3 className="text-sky-500 font-semibold">Nội dung:</h3>
                     <p>{item.content}</p>
                   </div>
                 </div>
