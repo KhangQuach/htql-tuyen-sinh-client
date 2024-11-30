@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useState } from "react";
+
 function Header() {
   const [position, setPosition] = useState("bottom")
   const nav = [
@@ -66,8 +67,8 @@ function Header() {
                 width: "100px",
                 objectFit: "contain",
                 borderRadius: "50%",
-                marginRight:"30px",
-                marginLeft:"15px"
+                marginRight: "30px",
+                marginLeft: "15px"
               }}
             />
             <div>
@@ -77,25 +78,33 @@ function Header() {
                 listStyleType: "none",
                 justifyContent: "start"
               }}>
-                {nav.map((item, index) => (
-                  <li key={index}>
-
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <div>
-                          <div href={item.href}>{item.title}</div>
-                        </div>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent className="w-56">
-                        <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
-                          <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
-                          <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
-                          <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
-                        </DropdownMenuRadioGroup>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </li>
-                ))}
+                {nav.map((item, index) => {
+                  if (item.title == "Trang chủ") {
+                    return (
+                      <div key={index}>
+                        <Link href="/">Trang chủ</Link>
+                      </div>
+                    )
+                  }
+                  return (
+                    <li key={index}>
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <div>
+                            <div href={item.href}>{item.title}</div>
+                          </div>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent className="w-56">
+                          <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+                            <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
+                            <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
+                            <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
+                          </DropdownMenuRadioGroup>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </li>
+                  )
+                })}
               </ul>
             </div>
           </Link>
@@ -107,14 +116,15 @@ function Header() {
           justifyContent: "flex-end",
           alignItems: "center",
           gap: "10px",
-          marginRight:"10px"
+          marginRight: "10px"
         }}>
-          <Button style={{ backgroundColor: 'rgb(2 132 199)' }} >Hồ sơ</Button>
+          <Button style={{ backgroundColor: 'rgb(2 132 199)' }} ><Link href="/aspiration">Đăng ký nguyện vọng</Link></Button>
+          <Button style={{ backgroundColor: 'rgb(2 132 199)' }} ><Link href="/candidate-profile">Hồ sơ</Link></Button>
+          <Button style={{ backgroundColor: 'rgb(2 132 199)' }} ><Link href="/announce">Thông báo</Link></Button>
           <Button style={{ backgroundColor: 'rgb(2 132 199)' }} >Tài khoản</Button>
-          <Button style={{ backgroundColor: 'rgb(2 132 199)' }} >Thông báo</Button>
-          <Button style={{ backgroundColor: 'rgb(2 132 199)' }} >Đăng nhập</Button>
         </div>
       </div>
+      <div className="h-20 flex justify-center items-center text-2xl text-white" style={{ backgroundColor: '#e3bf00' }}>Đồng thuận - Tận tâm - Chuẩn mực - Sáng tạo</div>
     </>
   )
 }
